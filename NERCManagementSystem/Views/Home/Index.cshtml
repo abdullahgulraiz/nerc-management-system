@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>NERC Management System </h1>
+</div>
+
+<div class="row">
+
+    <div class="col-md-8">
+        <h2>About</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper nunc sed blandit auctor. Aenean ultricies tortor mauris, sit amet aliquam quam euismod in. Mauris consectetur nunc nec libero facilisis, id dictum mauris tincidunt. Pellentesque gravida at odio scelerisque bibendum. Cras efficitur, lectus id euismod dignissim, mauris nulla maximus enim, ut fringilla lectus urna vitae turpis. Sed varius euismod malesuada. Mauris luctus aliquam mollis. Aenean eros arcu, suscipit quis bibendum et, faucibus id augue. Donec massa quam, dictum id accumsan vitae, porta vel ipsum. Mauris mi sem, ullamcorper et lectus in, maximus commodo elit. Etiam a lacus eu magna rhoncus dictum in et sapien. Donec sed pharetra ligula. Quisque vel tincidunt libero. Integer malesuada elit in ex scelerisque fermentum. Morbi bibendum sagittis quam ac blandit.</p>
+
+        <p>Aliquam lobortis massa vitae mi feugiat laoreet. Mauris euismod est eleifend, pellentesque sapien eu, sodales risus. Pellentesque consequat nisi nec dui aliquet, at lobortis lorem ornare. Etiam cursus et tortor eu luctus. Aenean lobortis, mi id elementum auctor, erat leo euismod sem, tincidunt auctor sem enim et orci. Morbi bibendum magna at lorem cursus luctus. Maecenas id gravida ipsum. Aliquam dignissim neque vel ex sodales pulvinar.</p>
+    </div>
+
+    <div class="col-md-4">
+        <h2>Tasks</h2>
+        @Html.ActionLink("Organizers", "Index", "Organizers", null, new { @class = "btn btn-default btn-lg btn-block" })
+        @Html.ActionLink("Institutions", "Index", "Institutions", null, new { @class = "btn btn-default btn-lg btn-block" })
+        @Html.ActionLink("Teams", "Index", "Teams", null, new { @class = "btn btn-default btn-lg btn-block" })
+        @Html.ActionLink("Members", "Index", "Members", null, new { @class = "btn btn-default btn-lg btn-block" })
+    </div>
+
+</div>

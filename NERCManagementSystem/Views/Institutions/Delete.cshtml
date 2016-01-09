@@ -1,0 +1,38 @@
+﻿@model NERCManagementSystem.Models.Institution
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Institutions</h2>
+<h4>Delete Institution</h4>
+
+<p>Are you sure you want to de-register the following institution? Doing so would remove the related teams and members as well!</p>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        
+
+        <dt>
+            Institution
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            City
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p class="text-center"><input type="submit" value="Delete" class="btn btn-danger" />          @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })</p>
+}
+</div>

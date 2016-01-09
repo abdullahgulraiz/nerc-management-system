@@ -1,0 +1,92 @@
+﻿@model NERCManagementSystem.Models.Member
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Members</h2>
+
+<div>
+    <h4>Details</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            Team
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Team.Name)
+        </dd>
+        <dt>
+            Type
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberType.Name)
+        </dd>
+
+        <dt>
+            CNIC
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CNIC)
+        </dd>
+
+        <dt>
+            Phone
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Father's Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FatherName)
+        </dd>
+
+        <dt>
+            Father's CNIC
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FatherCNIC)
+        </dd>
+
+        <dt>
+            Father's Phone
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FatherPhone)
+        </dd>
+
+        <dt>
+            Father's Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FatherEmail)
+        </dd>
+
+    </dl>
+</div>

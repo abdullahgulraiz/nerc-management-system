@@ -1,0 +1,30 @@
+﻿@model NERCManagementSystem.Models.InstitutionMembersVM
+
+@{
+    ViewBag.Title = "Members";
+}
+
+<h2>Institutions</h2>
+<h4>Members</h4>
+
+<p>Listing all participants from <u>@Model.Name</u>, @Model.City.Name</p>
+<br />
+<table class="table">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Team</th>
+    </tr>
+    @{int i = 0;}
+    @foreach (var member in Model.Members)
+    {
+        i++;
+        <tr>
+            <td>@i</td>
+            <td>@Html.ActionLink(member.FirstName + " " + member.LastName, "Details", "Member", new { id = member.ID }, null) </td>
+            <td>@member.MemberType.Name</td>
+            <td>@member.Team.Name</td>
+        </tr>
+    }
+</table>

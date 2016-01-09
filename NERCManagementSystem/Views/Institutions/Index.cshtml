@@ -1,0 +1,64 @@
+﻿@model IEnumerable<NERCManagementSystem.Models.Institution>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section styles {
+    <link rel="stylesheet" type="text/css" href="Content/jquery.dynatable.css" />
+}
+
+<h2>Institutions</h2>
+<h4>Registered Institutions</h4>
+
+@if (User.IsInRole("Admin") || (User.IsInRole("Organizer")))
+{
+    <p class="text-right">
+        @Html.ActionLink("Add an Institution", "Add", "Institutions", null, new { @class = "btn btn-default" })
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            City
+        </th>
+        <th></th>
+    </tr>
+@{
+    int i = 0;
+}
+@foreach (var item in Model) {
+    i++;
+    <tr>
+        <td>@i</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Teams", "Teams", new { id = item.ID }) |
+            @Html.ActionLink("Members", "Members", new { id = item.ID })
+            @if (User.IsInRole("Admin") || User.IsInRole("Organizer"))
+            {
+                <span>| </span> @Html.ActionLink("Edit", "Edit", new { id=item.ID }) <span>|</span>
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            }
+        </td>
+    </tr>
+}
+
+</table>
+
+@section scripts {
+    <script type="text/javascript" src="Content/js/jquery.dynatable.js">
+        $('#full-table').dynatable();
+    </script>
+}

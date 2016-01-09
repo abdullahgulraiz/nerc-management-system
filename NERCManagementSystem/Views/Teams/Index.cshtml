@@ -1,0 +1,67 @@
+﻿@model IEnumerable<NERCManagementSystem.Models.Team>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Teams</h2>
+<h4>All Teams</h4>
+
+@if (User.IsInRole("Admin") || User.IsInRole("Organizer"))
+{
+    <p class="text-right">
+        @Html.ActionLink("Add a Team", "Add", "Teams", null, new { @class = "btn btn-default" })
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Institution
+        </th>
+        <th>Categories</th>
+        <th></th>
+    </tr>
+@{int i = 0; string categories;}
+@foreach (var item in Model) {
+    i++;
+    categories = "";
+    <tr>
+        <td>@i</td>
+        <td>
+            @item.Name
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Institution.Name)
+        </td>
+        <td>
+            @foreach (var category in item.Categories)
+            {
+                if (categories == "")
+                {
+                    categories = category.Name;
+                }
+                else
+                {
+                    categories += string.Format(", {0}", category.Name);
+                }
+            }
+            @categories
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.ID })
+            @if (User.IsInRole("Admin") || User.IsInRole("Organizer"))
+            {
+             <span>|</span> @Html.ActionLink("Edit", "Edit", new { id=item.ID }) <span>|</span>
+             @Html.ActionLink("Delete", "Delete", new { id=item.ID })   
+            }
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,46 @@
+﻿@model NERCManagementSystem.Models.InstitutionTeamsViewModel
+
+@{
+    ViewBag.Title = "Teams";
+}
+
+
+
+<h2>Institutions</h2>
+<h4>Teams</h4>
+
+<p>Listing all teams from <u>@Model.Name</u>, @Model.City.Name</p>
+<br />
+<table class="table">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Categories</th>
+    </tr>
+    @{int i = 0; string categories = "";}
+    @foreach (var team in Model.Teams)
+    {
+    i++;
+    categories = "";
+    <tr>
+        <td>@i</td>
+        <td>@Html.ActionLink(team.Name, "Details", "Teams", new {id = team.ID}, null)</td>
+        <td>
+            @foreach (var category in team.Categories)
+            {
+                if (categories == "")
+                {
+                    categories = category.Name;
+                }
+                else
+                {
+                    categories += string.Format(", {0}", category.Name);
+                }
+            }
+            @categories
+        </td>
+    </tr>
+    }
+</table>
+
+

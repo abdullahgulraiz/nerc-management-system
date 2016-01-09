@@ -1,0 +1,78 @@
+﻿@model NERCManagementSystem.Models.AddTeamVM
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Teams</h2>
+<h4>Add a Team</h4>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.InstitutionID, "Institution", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.InstitutionID, (SelectList)ViewBag.InstitutionID, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.InstitutionID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Categories</label>
+            <div class="col-md-10">
+                @for (int i = 0; i < Model.Categories.Count; i++)
+                {
+                    @Html.HiddenFor(m=>m.Categories[i].CategoryID)
+                    <label class="checkbox-inline">
+                    @Html.CheckBoxFor(m => m.Categories[i].isChecked) @Html.DisplayFor(m => m.Categories[i].CategoryName)</label>
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, "Email",  new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword)
+            </div>
+        </div>
+    </div>
+    <p class="text-center"><input type="submit" value="Add" class="btn btn-primary" />          @Html.ActionLink("Cancel", "Index", null, new {@class = "btn btn-default"})</p>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

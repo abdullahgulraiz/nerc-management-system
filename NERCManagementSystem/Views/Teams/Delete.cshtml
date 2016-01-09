@@ -1,0 +1,59 @@
+﻿@model NERCManagementSystem.Models.DeleteTeamVM
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Teams</h2>
+<h4>Delete Team</h4>
+
+<p>Are you sure you want to delete this team and all its associated members?</p>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Name
+        </dt>
+
+        <dd>
+            @Model.Name
+        </dd>
+
+        <dt>
+            Institution
+        </dt>
+
+        <dd>
+            @Model.Institution
+        </dd>
+
+        <dt>
+            Categories
+        </dt>
+
+        <dd>
+            @{string categories = "";}
+            @foreach (var category in Model.Categories)
+            {
+                if (categories.Equals(""))
+                {
+                    categories = category.Name;
+                }
+                else
+                {
+                    categories += (", " + category.Name);
+                }
+            }
+            @categories
+        </dd>
+
+        <dt>Members</dt>
+        <dd>@Model.NumMembers</dd>
+
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <p class="text-center"><input type="submit" value="Delete" class="btn btn-danger" />          @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })</p>
+    }
+</div>

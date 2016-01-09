@@ -1,0 +1,70 @@
+﻿@model NERCManagementSystem.Models.Team
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.Name</h2>
+<h4>@Model.Institution.Name</h4>
+
+<div>
+	<hr />
+    @{
+        string registeredFor = "";
+        foreach (var category in Model.Categories)
+        {
+            if (registeredFor == "")
+            {
+                registeredFor = category.Name;
+            }
+            else
+            {
+                registeredFor += (", " + category.Name);
+            }
+        }
+      }
+    <p>
+        Registered for @registeredFor.
+    </p>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Members</h4>
+        </div>
+        <div class="col-md-6 text-right">
+            @if (User.IsInRole("Admin") || (User.IsInRole("Organizer")))
+            {
+                @Html.ActionLink("Add Member", "Add", "Members", null, new { @class="btn btn-default" })
+            }
+        </div>
+    </div>
+    
+    @{int i = 0;}
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Phone</th>
+            <th></th>
+        </tr>
+        @foreach (var member in Model.Members)
+        {
+            i++;
+            <tr>
+                <td>@i</td>
+                <td>@member.FirstName @member.LastName</td>
+                <td>@member.MemberType.Name</td>
+                <td>@member.Phone</td>
+                <td>
+                    @Html.ActionLink("Details","Details", "Members", new {id = member.ID}, null)
+                    @if (User.IsInRole("Admin") || (User.IsInRole("Organizer")))
+                    {
+                        <span>|</span> @Html.ActionLink("Edit","Edit", "Members", new {id = member.ID}, null) <span>|</span>
+                        @Html.ActionLink("Delete","Delete", "Members", new {id = member.ID}, null)
+                    }
+                    
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,42 @@
+﻿@model NERCManagementSystem.Models.Institution
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Institutions</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Edit an Institution</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="CityID" class="control-label col-md-2">City</label>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.CityID, (SelectList)ViewBag.CityID, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CityID)
+                </div>
+</div>
+    </div>
+    <p class="text-center"><input type="submit" value="Save" class="btn btn-primary" />          @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })</p>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

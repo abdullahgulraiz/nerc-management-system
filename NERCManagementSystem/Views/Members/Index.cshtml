@@ -1,0 +1,54 @@
+﻿@model IEnumerable<NERCManagementSystem.Models.Member>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Members</h2>
+<h4>All Members</h4>
+
+@if (User.IsInRole("Admin") || User.IsInRole("Organizer"))
+{
+    <p class="text-right">
+    @Html.ActionLink("Add Member", "Add", null, new { @class="btn btn-default"})
+    </p>
+}
+
+@{int i = 0;}
+<table class="table">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Team</th>
+        <th>Type</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    i++;
+    <tr>
+        <td>
+            @i
+        </td>
+        <td>
+            @item.FirstName @item.LastName
+        </td>
+        <td>
+            @item.Team.Name
+        </td>
+        <td>
+            @item.MemberType.Name
+        </td>
+        <td>
+            @if (User.IsInRole("Admin") || (User.IsInRole("Organizer")))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) <span>| </span>
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID }) <span>| </span>
+            }
+            @Html.ActionLink("Details", "Details", new { id=item.ID })
+            
+        </td>
+    </tr>
+}
+
+</table>
