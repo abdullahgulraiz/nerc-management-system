@@ -1,4 +1,4 @@
-[![Purpose](https://img.shields.io/badge/Purpose-Academic-blue.svg)](https://github.com/abdullahgulraiz/nerc-management-system)     [![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://github.com/abdullahgulraiz/nerc-management-system)
+[![Purpose](https://img.shields.io/badge/Purpose-Academic-blue.svg)](https://github.com/abdullahgulraiz/nerc-management-system)     [![Maintenance](https://img.shields.io/badge/Maintained%3F-No-red.svg)](https://github.com/abdullahgulraiz/nerc-management-system)
 
 
 # NERC Management System
