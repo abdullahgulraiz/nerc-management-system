@@ -1,4 +1,5 @@
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://github.com/abdullahgulraiz/nerc-management-system)
+[![Purpose](https://img.shields.io/badge/Purpose-Academic-blue.svg)](https://github.com/abdullahgulraiz/nerc-management-system)     [![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://github.com/abdullahgulraiz/nerc-management-system)
+
 
 # NERC Management System
 The project is an ASP.NET MVC 5 web app created for online representation of the [National Engineering Robotics Contest (NERC)](http://nerc.com.pk), an event organized and hosted by Department of Mechatronics Engineering at [National University of Sciences and Technology](http://nust.edu.pk).
